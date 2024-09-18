@@ -1,8 +1,8 @@
 # S-P Normalization
 
-"Scale Propagation Network for Generalizable Depth Completion"，
+**Scale Propagation Network for Generalizable Depth Completion, 2024**
 
-Haotian Wang, Meng Yang, Xinhu Zheng, and Gang Hua
+**Haotian Wang, Meng Yang, Xinhu Zheng, and Gang Hua**
 
 
 ## Requirments
