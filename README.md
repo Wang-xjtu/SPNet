@@ -1,4 +1,4 @@
-# S-P Normalization
+# SP-Normalization
 
 **Scale Propagation Network for Generalizable Depth Completion, 2024**
 
