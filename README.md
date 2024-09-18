@@ -1,6 +1,8 @@
 # S-P Normalization
 
-The resposity of the paper "Toward Zero-Shot Depth Completion: Enabling Scale Propagation in Modern Network" .
+"Scale Propagation Network for Generalizable Depth Completion"，
+
+Haotian Wang, Meng Yang, Xinhu Zheng, and Gang Hua
 
 
 ## Requirments
