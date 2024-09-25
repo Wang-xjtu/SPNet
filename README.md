@@ -19,7 +19,7 @@ The training code will be released after acceptance.
 
 ## Testing 
 
-1. Download and save [model](https://drive.google.com/file/d/1NICDWV0dYelaUqdXYQBLiyAyiTxPE_Pj/view?usp=drive_link) to ./checkpoints/
+1. Download and save [the model(large version)](https://drive.google.com/file/d/1NICDWV0dYelaUqdXYQBLiyAyiTxPE_Pj/view?usp=drive_link) to ./checkpoints/
 
 2. Download and unzip [test dataset](https://drive.google.com/file/d/1_KZJ2WZDLtlVS7Ww9XSkQUfwqyvLK1fB/view?usp=drive_link)
 
