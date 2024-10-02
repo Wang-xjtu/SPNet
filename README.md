@@ -23,15 +23,22 @@ The training code will be released after acceptance.
 
 | Pretrained Model                                                                                    | Blocks    | Channels | Drop rate |
 | --------------------------------------------------------------------------------------------------- |:-------:|:--------:|:-------:|
-| [SPNet-Tiny](https://drive.google.com/file/d/18je8eR_EqgtS8IM5dKvr0uy9jBoiMZe6/view?usp=sharing)    | (3,3,9,3)  | (96,192,384,768)    | 0.0  |
-| [SPNet-Small](https://drive.google.com/file/d/1nEoC1eUkvB_eZF-t6V_ykogwo0YXoA2l/view?usp=sharing)   | (3,3,27,3) | (96,192,384,768)    | 0.1  | 
-| [SPNet-Base](https://drive.google.com/file/d/1YtldwyFsTUwmii4H2_fk8z9OiRLdZniI/view?usp=sharing)    | (3,3,27,3) | (128,256,512,1024)  | 0.2  | 
-| [SPNet-Large](https://drive.google.com/file/d/10WTVS7a_5Hjo4f5iNgY0v_KsYuftoDZk/view?usp=sharing)   | (3,3,27,3) | (192,384,768,1536)  | 0.2  | 
+| [SPNet-Tiny](https://drive.google.com/file/d/18je8eR_EqgtS8IM5dKvr0uy9jBoiMZe6/view?usp=sharing)    | [3,3,9,3]  | [96,192,384,768]    | 0.0  |
+| [SPNet-Small](https://drive.google.com/file/d/1nEoC1eUkvB_eZF-t6V_ykogwo0YXoA2l/view?usp=sharing)   | [3,3,27,3] | [96,192,384,768]    | 0.1  | 
+| [SPNet-Base](https://drive.google.com/file/d/1YtldwyFsTUwmii4H2_fk8z9OiRLdZniI/view?usp=sharing)    | [3,3,27,3] | [128,256,512,1024]  | 0.1  | 
+| [SPNet-Large](https://drive.google.com/file/d/10WTVS7a_5Hjo4f5iNgY0v_KsYuftoDZk/view?usp=sharing)   | [3,3,27,3] | [192,384,768,1536]  | 0.2  | 
 
 2. Download and unzip [test dataset](https://drive.google.com/file/d/1_KZJ2WZDLtlVS7Ww9XSkQUfwqyvLK1fB/view?usp=drive_link)
 
 3. Run test.py
 
 ```python
-python test.py
+# SPNet-Tiny
+python test.py --dims=[3,3,9,3] --depths=[96,192,384,768] --dp_rate=0.0
+# SPNet-Small
+python test.py --dims=[3,3,27,3] --depths=[96,192,384,768] --dp_rate=0.1
+# SPNet-Base
+python test.py --dims=[3,3,27,3] --depths=[128,256,512,1024] --dp_rate=0.1
+# SPNet-Large
+python test.py --dims=[3,3,27,3] --depths=[192,384,768,1536] --dp_rate=0.2
 ```
