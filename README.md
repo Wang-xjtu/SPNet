@@ -1,4 +1,4 @@
-# SP-Normalization
+# SPNet
 
 **Scale Propagation Network for Generalizable Depth Completion, 2024**
 
