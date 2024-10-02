@@ -20,7 +20,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser("options", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--rgbd_dir", type=lambda x: Path(x), default=r'Ibims',
                         help="Path to RGBD folder")
-    parser.add_argument("--model_dir", type=lambda x: Path(x), default=r'checkpoints/epoch_300.pth',
+    parser.add_argument("--model_dir", type=lambda x: Path(x), default=r'checkpoints/Large.pth',
                         help="Path to load models")
     parser.add_argument("--norm_type", default='CNX', help="SP-Normalization")
     parser.add_argument("--dims", default=[192, 384, 768, 1536], help="dimensions")
