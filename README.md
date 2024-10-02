@@ -11,11 +11,11 @@
 
 Python=3.8
 
-Pytorch=2.0 
+Pytorch=2.3 
 
 ## Training
 
-The training code will be released after acceptance.
+Coming soon.
 
 ## Testing 
 
