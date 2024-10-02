@@ -34,11 +34,11 @@ The training code will be released after acceptance.
 
 ```python
 # SPNet-Tiny
-python test.py --dims=[3,3,9,3] --depths=[96,192,384,768] --dp_rate=0.0
+python test.py --dims=[3,3,9,3] --depths=[96,192,384,768] --dp_rate=0.0 --model_dir='checkpoints/Tiny.pth'
 # SPNet-Small
-python test.py --dims=[3,3,27,3] --depths=[96,192,384,768] --dp_rate=0.1
+python test.py --dims=[3,3,27,3] --depths=[96,192,384,768] --dp_rate=0.1 --model_dir='checkpoints/Small.pth'
 # SPNet-Base
-python test.py --dims=[3,3,27,3] --depths=[128,256,512,1024] --dp_rate=0.1
+python test.py --dims=[3,3,27,3] --depths=[128,256,512,1024] --dp_rate=0.1 --model_dir='checkpoints/Base.pth'
 # SPNet-Large
-python test.py --dims=[3,3,27,3] --depths=[192,384,768,1536] --dp_rate=0.2
+python test.py --dims=[3,3,27,3] --depths=[192,384,768,1536] --dp_rate=0.2 --model_dir='checkpoints/Large.pth'
 ```
