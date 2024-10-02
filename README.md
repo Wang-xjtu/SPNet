@@ -23,7 +23,7 @@ Coming soon.
 
 ## Testing 
 
-1. Download and save the `pretrained model` to `./checkpoints/models`
+1. Download and save the `pretrained model` to `./checkpoints`
 
 | Pretrained Model                                                                                    | Blocks    | Channels | Drop rate |
 | --------------------------------------------------------------------------------------------------- |:-------:|:--------:|:-------:|
