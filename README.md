@@ -23,12 +23,12 @@ The training code will be released after acceptance.
 
 | Pretrained Model                                                                                    | Blocks    | Channels | Drop rate |
 | --------------------------------------------------------------------------------------------------- |:-------:|:--------:|:-------:|
-| [SPNet-Tiny](https://drive.google.com/file/d/18je8eR_EqgtS8IM5dKvr0uy9jBoiMZe6/view?usp=sharing)    | [3,3,9,3]  | [96,192,384,768]    | 0.0  |
-| [SPNet-Small](https://drive.google.com/file/d/1nEoC1eUkvB_eZF-t6V_ykogwo0YXoA2l/view?usp=sharing)   | [3,3,27,3] | [96,192,384,768]    | 0.1  | 
-| [SPNet-Base](https://drive.google.com/file/d/1YtldwyFsTUwmii4H2_fk8z9OiRLdZniI/view?usp=sharing)    | [3,3,27,3] | [128,256,512,1024]  | 0.1  | 
-| [SPNet-Large](https://drive.google.com/file/d/10WTVS7a_5Hjo4f5iNgY0v_KsYuftoDZk/view?usp=sharing)   | [3,3,27,3] | [192,384,768,1536]  | 0.2  | 
+| [SPNet-Tiny](https://drive.google.com/file/d/1ivmCX-i9lej4uJhT0Yyk2Nq9ZmoQlsB9/view?usp=drive_link)    | [3,3,9,3]  | [96,192,384,768]    | 0.0  |
+| [SPNet-Small](https://drive.google.com/file/d/1Ba-W3oX62lCjx5MvvGkn91LXP6SuCnV6/view?usp=drive_link)   | [3,3,27,3] | [96,192,384,768]    | 0.1  | 
+| [SPNet-Base](https://drive.google.com/file/d/1B9uPRVPGm1F8F-isVDVzEdHgxXmp43hn/view?usp=drive_link)    | [3,3,27,3] | [128,256,512,1024]  | 0.1  | 
+| [SPNet-Large](https://drive.google.com/file/d/11dujPviL4pKLEXytXK0mEmPBNQDqgEak/view?usp=drive_link)   | [3,3,27,3] | [192,384,768,1536]  | 0.2  | 
 
-2. Download and unzip [test dataset](https://drive.google.com/file/d/1_KZJ2WZDLtlVS7Ww9XSkQUfwqyvLK1fB/view?usp=drive_link)
+2. Download and unzip [test dataset](https://drive.google.com/file/d/10tME1cuV0PVxrFLauTlv5SdQbZLUfdGy/view?usp=drive_link)
 
 3. Run test.py
 
