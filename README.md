@@ -23,7 +23,7 @@ Coming soon.
 
 ## Testing 
 
-1. Download and save the pretrained model to checkpoints/
+1. Download and save the `pretrained model` to `./checkpoints/models`
 
 | Pretrained Model                                                                                    | Blocks    | Channels | Drop rate |
 | --------------------------------------------------------------------------------------------------- |:-------:|:--------:|:-------:|
@@ -32,9 +32,9 @@ Coming soon.
 | [SPNet-Base](https://drive.google.com/file/d/1B9uPRVPGm1F8F-isVDVzEdHgxXmp43hn/view?usp=drive_link)    | [3,3,27,3] | [128,256,512,1024]  | 0.1  | 
 | [SPNet-Large](https://drive.google.com/file/d/11dujPviL4pKLEXytXK0mEmPBNQDqgEak/view?usp=drive_link)   | [3,3,27,3] | [192,384,768,1536]  | 0.2  | 
 
-2. Download and unzip [test dataset](https://drive.google.com/file/d/10tME1cuV0PVxrFLauTlv5SdQbZLUfdGy/view?usp=drive_link)
+2. Download and unzip [`test dataset`](https://drive.google.com/file/d/10tME1cuV0PVxrFLauTlv5SdQbZLUfdGy/view?usp=drive_link)
 
-3. Run test.py
+3. Run `test.py`
 
 ```python
 # SPNet-Tiny
