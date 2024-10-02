@@ -41,10 +41,6 @@ class RGBPReader(object):
         rgb, raw = self.read_rgbraw(rgb_path, raw_path)
         hole_raw = torch.ones_like(raw)
         hole_raw[raw == 0] = 0
-        if torch.sum(hole_raw) == 0:
-            self.rel = True
-        else:
-            self.rel = False
         return rgb, raw, hole_raw
 
     @staticmethod
@@ -76,75 +72,3 @@ class DepthEvaluation(object):
         diff[ground_truth == 0] = 0.
         rel = np.sum(abs(diff) / (ground_truth + 1e-6)) / np.count_nonzero(ground_truth)
         return rel
-
-    @staticmethod
-    def srmse(depth, ground_truth):
-        mask = np.ones_like(depth)
-        mask[ground_truth == 0] = 0
-        number_valid = np.sum(mask) + 1e-6
-        # sta depth
-        mean_d = np.sum(depth * mask) / number_valid
-        std_d = np.sum(np.abs(depth - mean_d) * mask) / number_valid
-        sta_dep = (depth - mean_d) / (std_d + 1e-6)
-        # sta gt
-        mean_gt = np.sum(ground_truth * mask) / number_valid
-        std_gt = np.sum(np.abs(ground_truth - mean_gt) * mask) / number_valid
-        sta_gt = (ground_truth - mean_gt) / (std_gt + 1e-6)
-
-        sta_rmse = np.sqrt(np.sum(mask * (sta_dep - sta_gt) ** 2) / number_valid)
-        return sta_rmse
-
-    @staticmethod
-    def oe(depth, ground_truth):
-        ordinal_error = OrdinalError()
-        value = ordinal_error.error(depth, ground_truth)
-        return value
-
-
-class OrdinalError(object):
-    def __init__(self, t=0.01):
-        super(OrdinalError, self).__init__()
-        self.t = t
-        self.eps = 1e-8
-
-    def ordinal_label(self, sampled_a, sampled_b):
-        label = np.zeros_like(sampled_a)
-        ratio = sampled_a / (sampled_b + self.eps)
-        label[ratio >= (1 + self.t)] = 1
-        label[ratio <= (1 / (1 + self.t))] = -1
-        return label
-
-    def sampling(self, pred, gt):
-        nonzero_pixels_index = np.nonzero(gt)
-        pixel_num = nonzero_pixels_index[0].shape[0]
-        # select_num = int(0.5 * pixel_num)
-        select_num = int(0.3 * pixel_num)
-
-        select_pixels_index_a = [i for i in range(pixel_num)]
-        select_pixels_index_b = [i for i in range(pixel_num)]
-        random.seed(1)
-        random.shuffle(select_pixels_index_a)
-        point_a_index_list = select_pixels_index_a[:select_num]
-        random.seed(2)
-        random.shuffle(select_pixels_index_b)
-        point_b_index_list = select_pixels_index_b[:select_num]
-
-        point_a_x = nonzero_pixels_index[0][point_a_index_list]
-        point_a_y = nonzero_pixels_index[1][point_a_index_list]
-        point_b_x = nonzero_pixels_index[0][point_b_index_list]
-        point_b_y = nonzero_pixels_index[1][point_b_index_list]
-
-        pred_sampled_a = pred[point_a_x, point_a_y]
-        gt_sampled_a = gt[point_a_x, point_a_y]
-        pred_sampled_b = pred[point_b_x, point_b_y]
-        gt_sampled_b = gt[point_b_x, point_b_y]
-
-        return pred_sampled_a, pred_sampled_b, gt_sampled_a, gt_sampled_b
-
-    def error(self, pred, gt):
-        pred_sampled_a, pred_sampled_b, gt_sampled_a, gt_sampled_b = self.sampling(pred, gt)
-        label_pred = self.ordinal_label(pred_sampled_a, pred_sampled_b)
-        label_gt = self.ordinal_label(gt_sampled_a, gt_sampled_b)
-        loss = np.where(label_pred == label_gt, np.zeros_like(label_pred), np.ones_like(label_pred))
-        loss = np.mean(loss)
-        return loss
