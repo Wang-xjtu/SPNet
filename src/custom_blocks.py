@@ -8,6 +8,8 @@ class LayerNorm(nn.Module):
     The ordering of the dimensions in the inputs. channels_last corresponds to inputs with
     shape (batch_size, height, width, channels) while channels_first corresponds to inputs
     with shape (batch_size, channels, height, width).
+    
+    We use channel_first mode for SP-Norm.
     """
 
     def __init__(self, normalized_shape, eps=1e-6, affine=True):
@@ -41,6 +43,7 @@ class NormLayer(nn.Module):
             self.norm = nn.Identity()
         elif self.norm_type in ['CNX', 'CN+X', 'GRN']:
             self.norm = LayerNorm(normalized_shape, affine=False)
+            # Use 1*1 conv to implement SLP in the channel dimension. 
             self.conv = nn.Conv2d(normalized_shape, normalized_shape, kernel_size=1)
         elif self.norm_type == 'NX':
             self.norm = LayerNorm(normalized_shape, affine=True)
