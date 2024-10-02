@@ -34,7 +34,7 @@ def demo_save(args):
     print('-----------building model-------------')
     network = V2Net(args.dims, args.depths, args.dp_rate, args.norm_type).cuda().eval()
     network.load_state_dict(torch.load(args.model_dir)['network'])
-    raw_dirs = ['0.1%']
+    raw_dirs = ['10%','1%','0.1%']
     print('-----------inferring---------------')
     for raw_dir in raw_dirs:
         with torch.no_grad():
@@ -54,7 +54,9 @@ def demo_save(args):
 
 
 def demo_metric(args):
-    raw_dirs = ['0.1%']
+    raw_dirs = ['10%','1%','0.1%']
+    avg_rmse=0
+    avg_rel=0
     for raw_dir in raw_dirs:
         srmse = 0.0
         ord_error = 0.0
@@ -70,20 +72,15 @@ def demo_metric(args):
             # depth should be nonzero
             pred = np.clip(np.array(Image.open(pred_path)).astype(np.float32), 1., 65535.)
             gt = np.array(Image.open(gt_path)).astype(np.float32)
-            if raw_dir == '0%':
-                srmse += DepthEvaluation.srmse(pred, gt)
-                ord_error += DepthEvaluation.oe(pred, gt)
-            else:
-                rmse += DepthEvaluation.rmse(pred, gt)
-                rel += DepthEvaluation.absRel(pred, gt)
-        if raw_dir == '0%':
-            srmse /= count
-            ord_error /= count
-            print('0%: srmse=', str(srmse), ' oe=', str(ord_error))
-        else:
-            rmse /= count
-            rel /= count
-            print(raw_dir, ': rmse=', str(rmse), ' Absrel=', str(rel))
+            rmse += DepthEvaluation.rmse(pred, gt)
+            rel += DepthEvaluation.absRel(pred, gt)
+
+        rmse /= count
+        rel /= count
+        avg_rmse += rmse
+        avg_rel += rel
+        print(raw_dir, ': rmse=', str(rmse), ' Rel=', str(rel))
+    print("Ibims: rmse=", str(ave_rmse/len(raw_dirs), ' Rel=', str(avg_rel/len(raw_dirs))
 
 
 if __name__ == "__main__":
