@@ -1,6 +1,6 @@
 # SPNet
 
-**[Scale Propagation Network for Generalizable Depth Completion]([https://arxiv.org/abs/2310.15422](https://arxiv.org/abs/2410.18408)), 2024**
+**[Scale Propagation Network for Generalizable Depth Completion](https://arxiv.org/abs/2410.18408), 2024**
 
 **Haotian Wang, Meng Yang, Xinhu Zheng, and Gang Hua**
 
