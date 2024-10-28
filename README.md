@@ -46,3 +46,14 @@ python test.py --dims=[3,3,27,3] --depths=[128,256,512,1024] --dp_rate=0.1 --mod
 # SPNet-Large
 python test.py --dims=[3,3,27,3] --depths=[192,384,768,1536] --dp_rate=0.2 --model_dir='checkpoints/Large.pth'
 ```
+
+## Citation
+
+```
+@article{wang2024scale,
+  title={Scale Propagation Network for Generalizable Depth Completion},
+  author={Wang, Haotian and Yang, Meng and Zheng, Xinhu and Hua, Gang},
+  journal={arXiv preprint arXiv:2410.18408},
+  year={2024}
+}
+```
