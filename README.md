@@ -1,8 +1,12 @@
 # SPNet
 
-**[Scale Propagation Network for Generalizable Depth Completion](https://arxiv.org/abs/2410.18408), 2024**
+** [T-PAMI 2025] [Scale Propagation Network for Generalizable Depth Completion](https://arxiv.org/abs/2410.18408)**
 
 **Haotian Wang, Meng Yang, Xinhu Zheng, and Gang Hua**
+
+## News
+
+- Paper is accepted in T-PAMI! `12/2024`
 
 ## Abstract
 
