@@ -1,8 +1,10 @@
-# SPNet
+# T-PAMI2025: SPNet
 
-** [T-PAMI 2025] [Scale Propagation Network for Generalizable Depth Completion](https://arxiv.org/abs/2410.18408)**
+**[Scale Propagation Network for Generalizable Depth Completion](https://ieeexplore.ieee.org/document/10786388)**
 
 **Haotian Wang, Meng Yang, Xinhu Zheng, and Gang Hua**
+
+**IEEE Transactions on Pattern Analysis and Machine Intelligence (T-PAMI), 2025**
 
 ## News
 
