@@ -4,7 +4,14 @@ import torch
 
 
 class Encoder(nn.Module):
-    def __init__(self, in_chans=5, dims=[96, 192, 384, 768], depths=[3, 3, 9, 3], dp_rate=0.0, norm_type='CNX'):
+    def __init__(
+        self,
+        in_chans=5,
+        dims=[96, 192, 384, 768],
+        depths=[3, 3, 9, 3],
+        dp_rate=0.0,
+        norm_type="CNX",
+    ):
         super(Encoder, self).__init__()
         all_dims = [dims[0] // 4, dims[0] // 2] + dims
         self.downsample_layers = nn.ModuleList()
@@ -13,7 +20,7 @@ class Encoder(nn.Module):
         for i in range(5):
             downsample_layer = nn.Sequential(
                 NormLayer(all_dims[i], norm_type),
-                nn.Conv2d(all_dims[i], all_dims[i + 1], kernel_size=2, stride=2)
+                nn.Conv2d(all_dims[i], all_dims[i + 1], kernel_size=2, stride=2),
             )
             self.downsample_layers.append(downsample_layer)
 
@@ -23,7 +30,12 @@ class Encoder(nn.Module):
         dp_rates = [x.item() for x in torch.linspace(0, dp_rate, sum(depths))]
         cur = 0
         for i in range(4):
-            stage = nn.Sequential(*[CNBlock(dims[i], norm_type, dp_rates[cur + j]) for j in range(depths[i])])
+            stage = nn.Sequential(
+                *[
+                    CNBlock(dims[i], norm_type, dp_rates[cur + j])
+                    for j in range(depths[i])
+                ]
+            )
             self.stages.append(stage)
             cur += depths[i]
 
@@ -37,13 +49,15 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    def __init__(self, out_chans=1, dims=[96, 192, 384, 768], norm_type='CNX'):
+    def __init__(self, out_chans=1, dims=[96, 192, 384, 768], norm_type="CNX"):
         super(Decoder, self).__init__()
         all_dims = [dims[0] // 4, dims[0] // 2] + dims
         self.upsample_layers = nn.ModuleList()
         self.fusion_layers = nn.ModuleList()
         for i in range(5):
-            upsample_layer = nn.ConvTranspose2d(all_dims[i + 1], all_dims[i], kernel_size=2, stride=2)
+            upsample_layer = nn.ConvTranspose2d(
+                all_dims[i + 1], all_dims[i], kernel_size=2, stride=2
+            )
             fusion_layer = nn.Conv2d(2 * all_dims[i], all_dims[i], kernel_size=1)
             self.upsample_layers.append(upsample_layer)
             self.fusion_layers.append(fusion_layer)
@@ -52,7 +66,7 @@ class Decoder(nn.Module):
         self.stages.append(nn.Identity())
         self.stages.append(nn.Identity())
         for i in range(3):
-            stage = CNBlock(dims[i], norm_type, 0.)
+            stage = CNBlock(dims[i], norm_type, 0.0)
             self.stages.append(stage)
         self.head = nn.Conv2d(all_dims[0], out_chans, kernel_size=3, padding=1)
 
